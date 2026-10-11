@@ -36,23 +36,33 @@ const HeaderPage = () => {
         <div className="w-full border-b border-gray-200 bg-white">
             <div className="container mx-auto flex w-full items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4">
 
+
                 {/* Logo */}
                 <div className="flex min-w-0 items-center gap-2 sm:gap-4">
                     <Link
                         href="/"
-                        className="shrink-0 rounded-xl bg-green-700 p-2 text-center text-xl sm:rounded-2xl sm:p-3 sm:text-2xl"
+                        aria-label="বাজার দর হোম"
+                        className="flex shrink-0 items-center justify-center rounded-xl bg-green-700 p-2 sm:p-3"
                     >
-                        🛒
+                        <Image
+                            src="/logo-icon.png"
+                            alt="Ghorer Bazar logo"
+                            width={40}
+                            height={40}
+                            className="h-8 w-8 object-contain sm:h-10 sm:w-10"
+                            priority
+                        />
                     </Link>
 
                     <div className="min-w-0">
                         <Link
                             href="/"
-                            className="block truncate text-xl font-bold sm:text-3xl"
+                            className="block truncate text-xl font-bold leading-tight text-black sm:text-3xl"
                         >
                             বাজার দর
                         </Link>
-                        <div className="text-xs sm:text-sm">
+
+                        <div className="mt-1 text-xs text-gray-600 sm:text-sm">
                             <BanglaDate />
                         </div>
                     </div>

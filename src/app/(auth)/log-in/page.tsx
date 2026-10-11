@@ -1,6 +1,6 @@
 "use client";
 import Link from 'next/link';
-import { FiGithub } from "react-icons/fi";
+import { FiGithub, FiEye, FiEyeOff } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from 'react-toastify';
 import { authClient } from '@/lib/auth-client';
@@ -12,6 +12,7 @@ const LoginFormContent = () => {
   const searchParams = useSearchParams();
   const hasNotified = useRef(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (searchParams.get("redirect") === "protected" && !hasNotified.current) {
@@ -81,13 +82,23 @@ const LoginFormContent = () => {
           />
 
           <label className="label mt-2">পাসওয়ার্ড</label>
-          <input
-            type="password"
-            name="password"
-            required
-            className="input w-full"
-            placeholder="কমপক্ষে ৮ অক্ষর"
-          />
+          <div className="relative w-full">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              required
+              className="input w-full pr-10"
+              placeholder="কমপক্ষে ৮ অক্ষর"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none p-1 cursor-pointer"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FiEyeOff className="text-lg" /> : <FiEye className="text-lg" />}
+            </button>
+          </div>
 
           <button
             type="submit"
