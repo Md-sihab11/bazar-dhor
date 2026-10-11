@@ -33,5 +33,9 @@ export default function BanglaDate({ className }: BanglaDateProps) {
     getServerSnapshot
   );
 
-  return <p className={className}>{date}</p>;
+  return (
+    <p className={className} suppressHydrationWarning>
+      {date}
+    </p>
+  );
 }

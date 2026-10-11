@@ -27,8 +27,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       lang="bn"
       data-theme="light"
       className={`${banglaFonts.className} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen flex flex-col bg-[#F0F5F0]">
+      <body className="min-h-screen flex flex-col bg-[#F0F5F0]" suppressHydrationWarning>
         <HeaderPage />
         <Suspense fallback={<div className="h-14 bg-white border-b border-gray-200" />}>
           <Navlinks />

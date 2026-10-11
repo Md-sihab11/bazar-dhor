@@ -33,28 +33,46 @@ const HeaderPage = () => {
     };
 
     return (
-        <div className="flex justify-between w-full border-b border-gray-200 bg-white">
-            <div className="flex justify-between container mx-auto py-4 px-4">
+        <div className="w-full border-b border-gray-200 bg-white">
+            <div className="container mx-auto flex w-full items-center justify-between gap-2 px-3 py-3 sm:px-4 sm:py-4">
 
                 {/* Logo */}
-                <div className="flex items-center gap-4">
-                    <Link href="/" className="text-center text-2xl bg-green-700 p-3 rounded-2xl">🛒</Link>
-                    <div>
-                        <Link href="/" className="text-3xl font-bold">বাজার দর</Link>
-                        <BanglaDate />
+                <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+                    <Link
+                        href="/"
+                        className="shrink-0 rounded-xl bg-green-700 p-2 text-center text-xl sm:rounded-2xl sm:p-3 sm:text-2xl"
+                    >
+                        🛒
+                    </Link>
+
+                    <div className="min-w-0">
+                        <Link
+                            href="/"
+                            className="block truncate text-xl font-bold sm:text-3xl"
+                        >
+                            বাজার দর
+                        </Link>
+                        <div className="text-xs sm:text-sm">
+                            <BanglaDate />
+                        </div>
                     </div>
                 </div>
 
                 {/* Auth Section */}
-                <div className="flex gap-2 items-center relative" ref={dropdownRef}>
+                <div
+                    className="relative flex shrink-0 items-center gap-1 sm:gap-2"
+                    ref={dropdownRef}
+                >
                     {isPending ? (
-                        <div className="w-9 h-9 rounded-full bg-gray-200 animate-pulse" />
+                        <div className="h-9 w-9 animate-pulse rounded-full bg-gray-200" />
                     ) : session ? (
                         <>
                             {/* Avatar + name button */}
                             <button
                                 onClick={() => setDropdownOpen((prev) => !prev)}
-                                className="flex items-center gap-2 hover:bg-gray-50 rounded-lg px-2 py-1 transition-colors"
+                                aria-expanded={dropdownOpen}
+                                aria-label="ব্যবহারকারীর মেনু"
+                                className="flex items-center gap-2 rounded-lg px-1.5 py-1 transition-colors hover:bg-gray-50 sm:px-2"
                             >
                                 {session.user?.image ? (
                                     <Image
@@ -62,41 +80,43 @@ const HeaderPage = () => {
                                         alt={session.user.name || "User"}
                                         width={36}
                                         height={36}
-                                        className="w-9 h-9 rounded-full object-cover"
+                                        className="h-9 w-9 rounded-full object-cover"
                                     />
                                 ) : (
-                                    <div className="w-9 h-9 rounded-full bg-green-700 flex items-center justify-center text-white font-bold text-sm">
+                                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-700 text-sm font-bold text-white">
                                         {session.user?.name?.charAt(0)?.toUpperCase() || "U"}
                                     </div>
                                 )}
-                                <span className="hidden sm:block text-sm font-medium text-gray-700 max-w-[120px] truncate">
+
+                                <span className="hidden max-w-[120px] truncate text-sm font-medium text-gray-700 sm:block">
                                     {session.user?.name}
                                 </span>
-                                <span className="text-gray-400 text-xs">▾</span>
+                                <span className="text-xs text-gray-400">▾</span>
                             </button>
 
                             {/* Dropdown */}
                             {dropdownOpen && (
-                                <div className="absolute top-full right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-100 z-50 py-2">
-                                    {/* User info */}
-                                    <div className="px-4 py-3 border-b border-gray-100">
-                                        <p className="font-bold text-gray-900 text-sm">{session.user?.name}</p>
-                                        <p className="text-gray-500 text-xs mt-0.5 truncate">{session.user?.email}</p>
+                                <div className="absolute right-0 top-full z-50 mt-2 w-56 rounded-xl border border-gray-100 bg-white py-2 shadow-lg">
+                                    <div className="border-b border-gray-100 px-4 py-3">
+                                        <p className="truncate text-sm font-bold text-gray-900">
+                                            {session.user?.name}
+                                        </p>
+                                        <p className="mt-0.5 truncate text-xs text-gray-500">
+                                            {session.user?.email}
+                                        </p>
                                     </div>
 
-                                    {/* Profile link */}
                                     <Link
                                         href="/profile"
                                         onClick={() => setDropdownOpen(false)}
-                                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50"
                                     >
                                         <span>👤</span> আমার প্রোফাইল
                                     </Link>
 
-                                    {/* Sign out */}
                                     <button
                                         onClick={handleSignOut}
-                                        className="flex items-center gap-2 w-full px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                                        className="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-red-600 transition-colors hover:bg-red-50"
                                     >
                                         <span>↩</span> সাইন আউট
                                     </button>
@@ -105,12 +125,22 @@ const HeaderPage = () => {
                         </>
                     ) : (
                         <>
-                            <Link href="/log-in" className="cursor-pointer font-semibold px-4 py-2 text-gray-700 hover:text-green-700 transition-colors">সাইন ইন</Link>
-                            <Link href="/sign-up" className="btn text-white bg-green-700 hover:bg-green-800 rounded border-0">সাইন আপ</Link>
+                            <Link
+                                href="/log-in"
+                                className="whitespace-nowrap px-2 py-2 text-sm font-semibold text-gray-700 transition-colors hover:text-green-700 sm:px-4"
+                            >
+                                সাইন ইন
+                            </Link>
+
+                            <Link
+                                href="/sign-up"
+                                className="whitespace-nowrap rounded border-0 bg-green-700 px-3 py-2 text-sm text-white transition-colors hover:bg-green-800 sm:px-4"
+                            >
+                                সাইন আপ
+                            </Link>
                         </>
                     )}
                 </div>
-
             </div>
         </div>
     );
