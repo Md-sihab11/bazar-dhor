@@ -1,5 +1,5 @@
 import Herosection from "@/components/Herosection";
-import SectionsPage from "@/components/shared/sections";
+import SectionsPage from "@/components/shared/(allgoodsTables)/sections";
 
 export default function Home() {
   return (

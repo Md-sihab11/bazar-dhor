@@ -45,7 +45,7 @@ const PriceSummery = ({ data }: { data: ProductMarquee }) => {
                         সবচেয়ে কম দামের বাজার
                     </p>
 
-                    <p className="font-semibold">{cheapestMarket.market}</p>
+                    {/* <p className="font-semibold">{cheapestMarket.market}</p> */}
                 </div>
 
                 <div className="rounded border border-gray-300 p-4">
@@ -60,7 +60,7 @@ const PriceSummery = ({ data }: { data: ProductMarquee }) => {
                         সবচেয়ে বেশি দামের বাজার
                     </p>
 
-                    <p className="font-semibold">{expensiveMarket.market}</p>
+                    {/* <p className="font-semibold">{expensiveMarket.market}</p> */}
                 </div>
 
                 <div className="rounded border border-gray-300 p-4">

@@ -96,7 +96,7 @@ const SectionsPage = async () => {
 
                                         {/* Percentage - Right */}
                                         <p className="text-red-600 font-medium text-sm sm:text-base text-right whitespace-nowrap">
-                                            ▲ {toBnNum(pr.change.pct)}%
+                                            ▲ {toBnNum (Math.abs(pr.change.pct))}%
                                         </p>
 
                                     </div>
@@ -180,7 +180,7 @@ const SectionsPage = async () => {
 
                                         {/* Percentage - Right */}
                                         <p className="text-green-600 font-medium text-sm sm:text-base text-right whitespace-nowrap">
-                                            ▼ {toBnNum(pr.change.pct)}%
+                                            ▼ {toBnNum (Math.abs(pr.change.pct))}%
                                         </p>
 
                                     </div>
@@ -276,10 +276,10 @@ const SectionsPage = async () => {
                                             <div className=" font-medium text-sm sm:text-base text-right whitespace-nowrap">
 
                                                 {
-                                                    isUp && (<span className="text-center text-red-600"> ▲{toBnNum(pr.change.pct)}%</span>)
+                                                    isUp && (<span className="text-center text-red-600"> ▲{toBnNum (Math.abs(pr.change.pct))}%</span>)
                                                 }
                                                 {
-                                                    isDown && (<span className="text-center text-green-600"> ▼{toBnNum(pr.change.pct)}%</span>)
+                                                    isDown && (<span className="text-center text-green-600"> ▼{toBnNum (Math.abs(pr.change.pct))}%</span>)
                                                 }
                                                 {
                                                     !isUp && !isDown && (

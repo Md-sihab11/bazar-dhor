@@ -1,4 +1,4 @@
-import PriceSummery from "@/components/shared/PriceSummery";
+import PriceSummery from "@/components/shared/(allgoodsTables)/PriceSummery";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";

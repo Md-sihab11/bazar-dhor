@@ -38,13 +38,13 @@ const Pagemarquee = async () => {
         <div className="text-black border border-gray-200 p-2 whitespace-nowrap" key={product.id}>
             <span>{`${product.categoryIcon} ${product.nameBn} ${toBnNum(product.today)} টাকা/${unitBn} `}</span>
             {isUp && (
-                <span className="text-center text-red-600"> ▲{toBnNum(product.change.pct)}%</span>
+                <span className="text-center text-red-600"> ▲{toBnNum (Math.abs(product.change.pct))}%</span>
             )}
             {isDown && (
-                <span className="text-center text-green-600"> ▼{toBnNum(product.change.pct)}%</span>
+                <span className="text-center text-green-600"> ▼{toBnNum (Math.abs(product.change.pct))}%</span>
             )}
             {!isUp && !isDown && (
-                <span className="text-xs text-gray-400"> ▬</span>
+                <span className="text-xs text-gray-500"> ▬ ০.০%</span>
             )}
         </div>
     );

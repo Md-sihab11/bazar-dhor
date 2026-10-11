@@ -161,13 +161,13 @@ const SortSelect = ({
 
                                         {isUp && (
                                             <span className="text-red-600">
-                                                ▲ {toBnNum(pr.change.pct)}%
+                                                ▲ {toBnNum (Math.abs(pr.change.pct))}
                                             </span>
                                         )}
 
                                         {isDown && (
                                             <span className="text-green-600">
-                                                ▼ {toBnNum(pr.change.pct)}%
+                                                ▼ {toBnNum (Math.abs(pr.change.pct))}%
                                             </span>
                                         )}
 
